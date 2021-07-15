@@ -1,5 +1,5 @@
 const products = [{id:"1",name:"Lenovo K6",categoryId:"1",price:2000,description:"Full Hd"}]
-
+//const connection = require("../utilitys/db")
 
 module.exports= class Product{
     constructor(name,categoryId,price,description){
