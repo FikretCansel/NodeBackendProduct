@@ -16,13 +16,13 @@ module.exports= class Category{
     add(){
         categories.push(this);
     }
-    update(product){
-        let index= products.findIndex((i)=>i===product.id);
+    update(id){
+        let index= categories.findIndex((i)=>i.id===id);
 
         categories[index].name=this.name;
         categories[index].categoryId=this.categoryId;
-        categories[index].price=price;
-        categories[index].description=description;
+        categories[index].price=this.price;
+        categories[index].description=this.description;
     }
 
 

@@ -1,15 +1,20 @@
 const Product = require("../models/product");
+const Result = require("../utilities/Results/Result");
+const DataResult = require("../utilities/Results/DataResult");
 
 exports.getAll=(req,res,next)=>{
-    console.log("get all çalıştı");
+    
     const products = Product.getAll();
-    res.send(products);
+    let result=new DataResult(true,"Işlem Başarılı",products);
+    res.send(result);
 }
 
 exports.getById=(req,res,next)=>{
     console.log(req.body.id);
     let product = Product.getById(req.body.id);
-    res.send(product);
+
+    let result=new DataResult(true,"Işlem Başarılı",product);
+    res.send(result);
 }
 
 exports.add=(req,res,next)=>{
@@ -18,11 +23,16 @@ exports.add=(req,res,next)=>{
 
     let product=new Product(req.body.name,req.body.categoryId,req.body.price,req.body.description);
     product.add();
-    res.send("Işlem Başarılı");
+
+    let result=new Result(true,"Işlem Başarılı");
+
+    res.send(result);
 }
 
 exports.update=(req,res,next)=>{
     let product=new Product(req.body.name,req.body.categoryId,req.body.price,req.body.description);
-    product.update();
-    res.send("Işlem Başarılı");
+    product.update(req.body.id);
+
+    let result=new Result(true,"Işlem Başarılı");
+    res.send(result);
 }

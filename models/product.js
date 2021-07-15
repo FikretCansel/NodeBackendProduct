@@ -22,13 +22,13 @@ module.exports= class Product{
     add(){
         products.push(this);
     }
-    update(product){
-        let index= products.findIndex((i)=>i===product.id);
+    update(id){
+        let index= products.findIndex((i)=>i.id===id);
 
-        product[index].name=this.name;
-        product[index].categoryId=this.categoryId;
-        product[index].price=price;
-        product[index].description=description;
+        products[index].name=this.name;
+        products[index].categoryId=this.categoryId;
+        products[index].price=this.price;
+        products[index].description=this.description;
     }
 
 
