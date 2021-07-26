@@ -3,9 +3,9 @@
 MySql Database
 
 
-#Product
+# Product
 
-##Product Add
+## Product Add
 
 http://localhost:3000/products/add,
 {
@@ -15,7 +15,7 @@ http://localhost:3000/products/add,
             "description": "good"
 }
 
-##Product getAll
+## Product getAll
 
 http://localhost:3000/products
 
@@ -25,14 +25,14 @@ and more.......
 #Category
 
 
-##Category add
+## Category add
 
 http://localhost:3000/categories/add
 {
 name:"Laptop"
 }
 
-##Category getAll
+## Category getAll
 
 http://localhost:3000/categories
 
