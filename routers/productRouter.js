@@ -8,5 +8,7 @@ router.get("/products/getAll",controller.getAll)
 
 router.get("/products/getById",controller.getById)
 
+router.get("/products/getByCategoryId",controller.getByCategoryId)
+
 module.exports=router;
 

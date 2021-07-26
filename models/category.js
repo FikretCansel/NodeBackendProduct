@@ -1,28 +1,23 @@
-const categories = [{id:"1",name:"Bilgisayar"}]
-
+const connection = require("../utilities/config/db")
 
 module.exports= class Category{
     constructor(name){
-        this.id=categories.length+1;
         this.name=name;
     }
     static getAll(){
-        return categories;
+        return connection.execute('Select * from categories')
     }
     static getById(id){
-         return categories.find(product=>product.id===id);
+        return connection.execute("Select * from categories where id=?",[id]);
     }
-
+    static delete(id){
+        return connection.execute("Delete from categories where id=?",[id]);
+    }
     add(){
-        categories.push(this);
+        return connection.execute("Insert Into categories (name) Values (?)", [this.name]);
     }
     update(id){
-        let index= categories.findIndex((i)=>i.id===id);
-
-        categories[index].name=this.name;
-        categories[index].categoryId=this.categoryId;
-        categories[index].price=this.price;
-        categories[index].description=this.description;
+        return null;
     }
 
 

@@ -1,34 +1,36 @@
-const products = [{id:"1",name:"Lenovo K6",categoryId:"1",price:2000,description:"Full Hd"}]
-//const connection = require("../utilitys/db")
+const connection = require("../utilities/config/db")
 
 module.exports= class Product{
-    constructor(name,categoryId,price,description){
-        this.id=products.length+1;
-        this.name=name;
+    constructor(productName,categoryId,price,description){
+        this.productName=productName;
         this.categoryId=categoryId;
         this.price=price;
         this.description=description;
     }
     static getAll(){
-        return products;
+        return connection.execute('Select * from products')
     }
     static getById(id){
-         return products.find(product=>product.id===id);
+        return connection.execute("Select * from products where id=?",[id])
     }
     static getByCategoryId(id){
-        return products.filter(c=>c.categoryId===id);
+        return connection.execute("Select * from products where categoryId=?",[id])
+    }
+    static delete(id){
+        return connection.execute("Delete from products where id=?",[id])
     }
 
     add(){
-        products.push(this);
+        return connection.execute("Insert Into products (productName,categoryId,price,description) Values (?,?,?,?)", [this.productName, this.categoryId, this.price,this.description]);
     }
     update(id){
-        let index= products.findIndex((i)=>i.id===id);
+        // console.log(id);
+        // console.log(this.productName);
+        // console.log(this.categoryId);
+        // console.log(this.price);
+        // console.log(this.description);
 
-        products[index].name=this.name;
-        products[index].categoryId=this.categoryId;
-        products[index].price=this.price;
-        products[index].description=this.description;
+        return connection.execute("Update products set (productName,categoryId,price,description) Values (?,?,?,?) where id=?"  , [this.productName, this.categoryId, this.price,this.description,id]);
     }
 
 

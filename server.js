@@ -4,9 +4,7 @@ const indexRouter = require("./routers/indexRouter");
 
 const bodyParser = require('body-parser')
 
-
 app.use(bodyParser.urlencoded({ extended: false }))
-
 
 app.use(indexRouter);
 

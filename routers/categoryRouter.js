@@ -6,9 +6,7 @@ router.get("/categories",controller.getAll)
 
 router.get("/categories/getAll",controller.getAll)
 
-router.get("/categories/add",controller.add)
-
-router.get("/categories/update",controller.update)
+router.get("/categories/getById",controller.getById)
 
 module.exports=router;
 
