@@ -3,7 +3,6 @@ const mongodb=require("mongodb")
 
 
 module.exports=class MoProductDal{
-    
     add(product){
         const db = getDb();
         delete product.id;
@@ -12,7 +11,6 @@ module.exports=class MoProductDal{
         })
         .catch(err=>{console.log(err);});
     }
-
     getAll(){
         const db=getDb();
         return db.collection("products").find({}).toArray().then(products=>{return products}).catch(err=>console.log(err));

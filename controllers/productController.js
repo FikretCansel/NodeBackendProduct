@@ -4,14 +4,11 @@ const DataResult = require("../utilities/Results/DataResult");
 const MooProductDal = require("../dataAccess/mongodb/moongose/mooProductDal");
 const Messages = require("../utilities/ResultMessages/Messages.js");
 
-
 const productDal= new MooProductDal();
 
 exports.getAll= async(req,res,next)=>{
-    
     let products =await productDal.getAll().then(data=>{return data;}).catch(err=>console.log(err));
-    
-    let result=new DataResult(true,"Işlem Başarılı",products);
+    let result=new DataResult(true,Messages.OperationSuccess,products);
     res.send(result);
 }
 
@@ -38,12 +35,10 @@ exports.getByCategoryId=async(req,res,next)=>{
 
 exports.add=async(req,res,next)=>{
     // {productName:"Lenovo K6",categoryId:1,price:2000,description:"Full Hd"
-    
     let product=new Product(req.body.productName,req.body.categoryId,req.body.price,req.body.description);
     //let product=new Product("monster laptopv17.1",1,1600,"gtx1650 ekran karti");
     productDal.add(product).then(data=>{return data;}).catch(err=>console.log(err));;
     let result=new Result(true,Messages.OperationSuccess);
-
     res.send(result);
 }
 
