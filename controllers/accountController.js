@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const sgMail = require('@sendgrid/mail');
 const crypto=require("crypto");
 
-sgMail.setApiKey("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")
+sgMail.setApiKey("your-key")
 
 const userDal = new MooUserDal();
 
