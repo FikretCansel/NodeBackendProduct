@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 const productShema = new Schema({
     productName:  {
         type:String,
-        required:true,
-        default:"Default Name"
+        required:[true,"Ürün adı gereklidir."],
+        minlength:3
     }, // String is shorthand for {type: String}
     categoryId: {
         type:Number,
@@ -14,12 +14,25 @@ const productShema = new Schema({
     },
     price:   {
         type:Number,
-        required:true
+        // required:function () {
+        //     return this.isActive;
+        // },
+        required:true,
+        min:0
     },
     description: {
         type:String,
-        required:true
+        validate:{
+            validator:function(value) {
+                return value && value.length >5;
+            },
+            message:'Ürün açıklaması en 5 karakter uzunlugunda olmalıdır.'
+        }
     },
+    isActive:{
+        type:Boolean,
+        default:false
+    }
 });
 
 module.exports = mongoose.model('Product',productShema);

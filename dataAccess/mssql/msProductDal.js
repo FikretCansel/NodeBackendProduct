@@ -1,7 +1,7 @@
 const connection = require("./contexts/msCommerceContext");
 
 module.exports =class MsProductDal{
-    static getAll(){
+    static getAll(){ 
         var request = new sql.Request();
         return connection.then((e=>{
             return e.execute(request.query('select * from Products'));

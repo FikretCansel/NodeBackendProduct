@@ -11,7 +11,7 @@ const MooUserDal=require("./dataAccess/mongodb/moongose/mooUserDal");
 
 const userDal = new MooUserDal();
 
-const mongoDbConnectionString="your-key";
+const mongoDbConnectionString="mongodb+srv://fikfik:fik11fikret@cluster0.ko3tm.mongodb.net/Commerce?retryWrites=true&w=majority";
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -47,6 +47,7 @@ app.use((req,res,next)=>{
 
 
 app.use(indexRouter);
+
   
 
 mongoose.connect(mongoDbConnectionString).then(()=>{

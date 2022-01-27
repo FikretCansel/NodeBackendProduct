@@ -11,3 +11,5 @@ exports.BeAuthenticated="Lütfen Giriş Yapınız!";
 exports.UserNotFound="Kullanıcı Bulunamadı";
 
 exports.NotAuthorized="Yetkiniz Yok!";
+
+exports.ValidationError="Validation Hatası";
